@@ -1,0 +1,12 @@
+<!-- @dsCard group="Brand" viewport="700x150" name="Motion" subtitle="Calm ease-out fades/rises, 120–280ms, no bounce" -->
+<html><head><link rel="stylesheet" href="../styles.css"><style>
+body{margin:0;padding:20px;background:var(--surface-app);display:flex;gap:16px;align-items:center}
+.card{background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:14px 18px;font:var(--type-body-sm);box-shadow:var(--shadow-sm);opacity:0;transform:translateY(6px);animation:rise var(--duration-slow) var(--ease-out) forwards}
+.card:nth-child(2){animation-delay:.15s}
+.card:nth-child(3){animation-delay:.3s}
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
+</style></head><body>
+<div class="card">淡入 + 上浮 180–280ms</div>
+<div class="card">ease-out，无回弹</div>
+<div class="card">按压态：scale(0.98)</div>
+</body></html>

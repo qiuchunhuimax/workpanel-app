@@ -1,0 +1,51 @@
+<!-- @dsCard group="Components" viewport="700x420" name="Forms" subtitle="Button · IconButton · Input · Select · Checkbox · Radio · Switch" -->
+<html><head><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:20px;background:var(--surface-app)}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ic{width:16px;height:16px}
+</style></head>
+<body><div id="root"></div>
+<script type="text/babel">
+const { Button, IconButton, Input, Select, Checkbox, Radio, Switch } = window.DesignSystem_3175a1;
+const Ic = ({name}) => <img className="ic" src={`https://unpkg.com/lucide-static@latest/icons/${name}.svg`} />;
+function Demo(){
+  const [checked, setChecked] = React.useState(true);
+  const [radio, setRadio] = React.useState('week');
+  const [on, setOn] = React.useState(true);
+  return <div>
+    <div className="row">
+      <Button variant="primary">保存机制</Button>
+      <Button variant="secondary">取消</Button>
+      <Button variant="ghost">查看详情</Button>
+      <Button variant="danger">删除项目</Button>
+      <Button variant="primary" icon={<Ic name="plus" />}>新建里程碑</Button>
+      <Button variant="primary" disabled>已禁用</Button>
+    </div>
+    <div className="row">
+      <Button variant="secondary" size="sm">小</Button>
+      <Button variant="secondary" size="md">中</Button>
+      <Button variant="secondary" size="lg">大</Button>
+      <IconButton icon={<Ic name="bell" />} aria-label="通知" />
+      <IconButton icon={<Ic name="more-horizontal" />} outline aria-label="更多" />
+      <IconButton icon={<Ic name="settings" />} size="lg" aria-label="设置" />
+    </div>
+    <div className="grid">
+      <Input label="项目名称" placeholder="例如：Q3 上线冲刺" />
+      <Input label="搜索" icon={<Ic name="search" />} placeholder="搜索任务或成员" />
+      <Select label="状态"><option>进行中</option><option>已完成</option><option>已延期</option></Select>
+      <Input label="截止日期" defaultValue="2026-07-10" error="请选择一个未来日期" />
+    </div>
+    <div className="row" style={{marginTop:16}}>
+      <Checkbox label="包含已归档项目" checked={checked} onChange={e=>setChecked(e.target.checked)} />
+      <Radio name="cad" label="按周复盘" checked={radio==='week'} onChange={()=>setRadio('week')} />
+      <Radio name="cad" label="按里程碑复盘" checked={radio==='milestone'} onChange={()=>setRadio('milestone')} />
+      <Switch label="启用 AI 每日播报" checked={on} onChange={e=>setOn(e.target.checked)} />
+    </div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body></html>

@@ -1,0 +1,37 @@
+<!-- @dsCard group="Components" viewport="700x340" name="Feedback" subtitle="Badge · Tag · Tooltip · Toast" -->
+<html><head><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:20px;background:var(--surface-app)}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:18px}.ic{width:20px;height:20px}</style></head>
+<body><div id="root"></div>
+<script type="text/babel">
+const { Badge, Tag, Tooltip, Toast, IconButton } = window.DesignSystem_3175a1;
+const Ic = ({name}) => <img className="ic" src={`https://unpkg.com/lucide-static@latest/icons/${name}.svg`} />;
+function Demo(){
+  return <div>
+    <div className="row">
+      <Badge tone="warning" dot>待复盘</Badge>
+      <Badge tone="success">已完成</Badge>
+      <Badge tone="danger">已延期</Badge>
+      <Badge tone="info">待确认</Badge>
+      <Badge tone="accent">里程碑</Badge>
+      <Badge tone="neutral">已归档</Badge>
+    </div>
+    <div className="row">
+      <Tag>前端</Tag>
+      <Tag>设计</Tag>
+      <Tag removable onRemove={()=>{}}>产品经理</Tag>
+      <Tooltip label="标记为已完成"><IconButton icon={<Ic name="check" />} aria-label="标记为已完成" /></Tooltip>
+      <Tooltip label="更多操作"><IconButton icon={<Ic name="more-horizontal" />} outline aria-label="更多操作" /></Tooltip>
+    </div>
+    <div className="row" style={{alignItems:'flex-start'}}>
+      <Toast tone="success" icon={<Ic name="party-popper" />} title="里程碑已达成" description="阶段一验收已完成，AI 已生成复盘草稿" onClose={()=>{}} />
+      <Toast tone="info" icon={<Ic name="sparkles" />} title="AI：本周进度过半" description="3 个任务待跟进，要不要现在复盘一下？" onClose={()=>{}} />
+    </div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body></html>

@@ -1,0 +1,31 @@
+<!-- @dsCard group="Components" viewport="700x320" name="Data — Card, Avatar, ProgressBar" subtitle="Content card, identity, and progress fill" -->
+<html><head><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:20px;background:var(--surface-sunken)}.row{display:flex;gap:16px;margin-bottom:16px;align-items:center}</style></head>
+<body><div id="root"></div>
+<script type="text/babel">
+const { Card, Avatar, ProgressBar } = window.DesignSystem_3175a1;
+function Demo(){
+  return <div>
+    <div className="row">
+      <Card title="阶段一 · 需求对齐" interactive style={{width:260}}>3 个任务 · 截止 7 月 10 日</Card>
+      <Card title="阶段二 · 开发" style={{width:260}}>暂无进行中任务</Card>
+    </div>
+    <div className="row">
+      <Avatar name="李婉婷" status="online" />
+      <Avatar name="陈明浩" size="lg" />
+      <Avatar ai name="AI" />
+      <Avatar name="王芷若" size="sm" status="offline" />
+    </div>
+    <div className="row" style={{flexDirection:'column',alignItems:'stretch',maxWidth:360}}>
+      <ProgressBar label="阶段一 · 需求对齐" value={62} />
+      <ProgressBar label="阶段二 · 开发" value={18} />
+    </div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body></html>

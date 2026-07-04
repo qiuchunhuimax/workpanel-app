@@ -1,0 +1,108 @@
+<!-- @dsCard group="Web App" viewport="1440x720" name="工作面板 — 白板 / 讨论 / 复盘 / 机制设置" subtitle="Interactive click-through of the core app" -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>工作面板</title>
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="app.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script src="data.js"></script>
+<style>html,body{margin:0;height:100%}#root{height:100%}</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="ProjectsView.jsx"></script>
+<script type="text/babel" src="Sidebar.jsx"></script>
+<script type="text/babel" src="BoardView.jsx"></script>
+<script type="text/babel" src="PeopleView.jsx"></script>
+<script type="text/babel" src="ChannelView.jsx"></script>
+<script type="text/babel" src="DocsView.jsx"></script>
+<script type="text/babel" src="TimelineView.jsx"></script>
+<script type="text/babel" src="RetroView.jsx"></script>
+<script type="text/babel" src="MechanismView.jsx"></script>
+<script type="text/babel">
+const { Tabs, Button, IconButton } = window.DesignSystem_3175a1;
+
+function App() {
+  const [projectId, setProjectId] = React.useState(null);
+  const [nav, setNav] = React.useState('board');
+  const [boardTab, setBoardTab] = React.useState('board');
+  const [notifOpen, setNotifOpen] = React.useState(false);
+  const [notifications, setNotifications] = React.useState(window.WorkpanelData.notifications);
+  const unreadCount = notifications.filter(n => !n.read).length;
+
+  const openNotifs = () => {
+    setNotifOpen(o => !o);
+  };
+  const markAllRead = () => setNotifications(notifications.map(n => ({ ...n, read: true })));
+  const markRead = (id) => setNotifications(notifications.map(n => n.id === id ? { ...n, read: true } : n));
+
+  const titles = { board: '白板', people: '人员', channel: '讨论 · 团队提问与讨论', docs: '文档', retro: '复盘', mechanism: '机制设置' };
+
+  if (!projectId) {
+    return <window.ProjectsView onOpen={(id) => { setProjectId(id); setNav('board'); }} />;
+  }
+  const project = window.WorkpanelData.projects.find(p => p.id === projectId);
+
+  return (
+    <div className="wp-app">
+      <window.Sidebar active={nav} onNavigate={setNav} project={project} onBack={() => setProjectId(null)} />
+      <div className="wp-shell-main">
+        <div className="wp-shell-topbar">
+          <span className="wp-shell-topbar__title">{titles[nav]}</span>
+          {nav === 'board' ? (
+            <Tabs tabs={[{ key: 'board', label: '看板' }, { key: 'timeline', label: '时间线' }]} active={boardTab} onChange={setBoardTab} />
+          ) : <span></span>}
+          <div className="wp-shell-topbar__actions">
+            <IconButton icon={<img src={window.WP_ICON('search')} alt="" />} aria-label="搜索" />
+            <div className="wp-notif-wrap">
+              <IconButton icon={<img src={window.WP_ICON('bell')} alt="" />} aria-label="通知" onClick={openNotifs} />
+              {unreadCount > 0 ? <span className="wp-notif-dot"></span> : null}
+              {notifOpen ? (
+                <React.Fragment>
+                  <div className="wp-notif-scrim" onClick={() => setNotifOpen(false)}></div>
+                  <div className="wp-notif-panel">
+                    <div className="wp-notif-panel__head">
+                      <span>通知</span>
+                      <button type="button" className="wp-notif-panel__mark" onClick={markAllRead}>全部标为已读</button>
+                    </div>
+                    <div className="wp-notif-panel__list">
+                      {notifications.map(n => (
+                        <div key={n.id} className={`wp-notif-item ${n.read ? '' : 'wp-notif-item--unread'}`} onClick={() => markRead(n.id)}>
+                          <img className="wp-notif-item__icon" src={window.WP_ICON(n.icon)} alt="" />
+                          <div className="wp-notif-item__body">
+                            <span className="wp-notif-item__text">{n.text}</span>
+                            <span className="wp-notif-item__time">{n.time}</span>
+                          </div>
+                          {!n.read ? <span className="wp-notif-item__dot"></span> : null}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </React.Fragment>
+              ) : null}
+            </div>
+            {nav === 'board' ? <Button variant="primary" icon={<img src={window.WP_ICON('plus')} style={{width:16,height:16}} alt="" />}>新建任务</Button> : null}
+          </div>
+        </div>
+        <div className="wp-shell-content">
+          {nav === 'board' && (boardTab === 'board' ? <window.BoardView /> : <window.TimelineView />)}
+          {nav === 'people' && <window.PeopleView />}
+          {nav === 'channel' && <window.ChannelView />}
+          {nav === 'docs' && <window.DocsView />}
+          {nav === 'retro' && <window.RetroView />}
+          {nav === 'mechanism' && <window.MechanismView />}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

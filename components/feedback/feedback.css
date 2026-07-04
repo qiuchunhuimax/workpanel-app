@@ -1,0 +1,33 @@
+/* 工作面板 — Feedback component styles (Badge, Tag, Tooltip, Toast) */
+
+.wp-badge{display:inline-flex;align-items:center;gap:4px;height:20px;padding:0 8px;border-radius:var(--radius-pill);font:var(--type-label-upper);letter-spacing:var(--text-tracking-wide);white-space:nowrap;flex-shrink:0}
+.wp-badge--neutral{background:var(--surface-sunken);color:var(--text-secondary)}
+.wp-badge--success{background:var(--status-success-bg);color:var(--status-success-fg)}
+.wp-badge--danger{background:var(--status-danger-bg);color:var(--status-danger-fg)}
+.wp-badge--info{background:var(--status-info-bg);color:var(--status-info-fg)}
+.wp-badge--warning{background:var(--status-warning-bg);color:var(--status-warning-fg)}
+.wp-badge--accent{background:var(--accent-subtle);color:var(--accent-active)}
+.wp-badge__dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+
+.wp-tag{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:var(--radius-pill);background:var(--surface-sunken);border:1px solid var(--border-subtle);color:var(--text-primary);font:var(--type-label);font-weight:500;cursor:default;white-space:nowrap;flex-shrink:0}
+.wp-tag--removable{padding-right:6px}
+.wp-tag__remove{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;color:var(--text-tertiary);cursor:pointer;background:transparent;border:none}
+.wp-tag__remove:hover{background:var(--base-line-300);color:var(--text-primary)}
+.wp-tag__remove svg{width:10px;height:10px}
+
+.wp-tooltip-wrap{position:relative;display:inline-flex}
+.wp-tooltip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(2px);background:var(--surface-inverse);color:var(--text-on-inverse);font:var(--type-label);font-weight:500;padding:6px 10px;border-radius:var(--radius-sm);white-space:nowrap;box-shadow:var(--shadow-md);opacity:0;pointer-events:none;transition:opacity var(--duration-base) var(--ease-out),transform var(--duration-base) var(--ease-out);z-index:20}
+.wp-tooltip-wrap:hover .wp-tooltip{opacity:1;transform:translateX(-50%) translateY(0)}
+.wp-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--surface-inverse)}
+
+.wp-toast{display:flex;align-items:flex-start;gap:10px;width:360px;background:var(--surface-overlay);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:14px 16px}
+.wp-toast__icon{width:20px;height:20px;flex-shrink:0;display:flex}
+.wp-toast__icon svg{width:100%;height:100%}
+.wp-toast--success .wp-toast__icon{color:var(--status-success-fg)}
+.wp-toast--danger .wp-toast__icon{color:var(--status-danger-fg)}
+.wp-toast--info .wp-toast__icon{color:var(--status-info-fg)}
+.wp-toast__body{flex:1;display:flex;flex-direction:column;gap:2px}
+.wp-toast__title{font:var(--type-h3);font-size:var(--text-size-sm);color:var(--text-primary)}
+.wp-toast__desc{font:var(--type-body-sm);font-size:var(--text-size-xs);color:var(--text-secondary)}
+.wp-toast__close{background:none;border:none;color:var(--text-tertiary);cursor:pointer;width:16px;height:16px;flex-shrink:0;padding:0}
+.wp-toast__close svg{width:100%;height:100%}

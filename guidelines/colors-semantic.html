@@ -1,0 +1,14 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Semantic Status" subtitle="Success · Danger · Info · Warning" -->
+<html><head><link rel="stylesheet" href="../styles.css"><style>
+body{margin:0;padding:16px;background:var(--surface-app);font-family:var(--font-body)}
+.row{display:flex;gap:8px;height:96px}
+.sw{flex:1;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font:var(--type-label);gap:6px}
+.dot{width:8px;height:8px;border-radius:50%}
+</style></head><body>
+<div class="row">
+<div class="sw" style="background:var(--status-success-bg);color:var(--status-success-fg)">成功 · 已完成</div>
+<div class="sw" style="background:var(--status-danger-bg);color:var(--status-danger-fg)">异常 · 已延期</div>
+<div class="sw" style="background:var(--status-info-bg);color:var(--status-info-fg)">信息 · 待确认</div>
+<div class="sw" style="background:var(--status-warning-bg);color:var(--status-warning-fg)">提醒 · 待复盘</div>
+</div>
+</body></html>

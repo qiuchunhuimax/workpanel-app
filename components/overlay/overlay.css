@@ -1,0 +1,9 @@
+/* 工作面板 — Overlay component styles (Dialog) */
+.wp-dialog-scrim{position:fixed;inset:0;background:rgba(26,26,26,.32);display:flex;align-items:center;justify-content:center;z-index:100;animation:wp-scrim-in var(--duration-base) var(--ease-out)}
+@keyframes wp-scrim-in{from{opacity:0}to{opacity:1}}
+.wp-dialog{width:440px;max-width:calc(100vw - 32px);background:var(--surface-overlay);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);border:1px solid var(--border-subtle);animation:wp-dialog-in var(--duration-slow) var(--ease-out)}
+@keyframes wp-dialog-in{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.wp-dialog__header{display:flex;align-items:center;justify-content:space-between;padding:20px 20px 0}
+.wp-dialog__title{font:var(--type-h2);font-size:var(--text-size-lg);color:var(--text-primary)}
+.wp-dialog__body{padding:12px 20px 20px;font:var(--type-body-sm);color:var(--text-secondary)}
+.wp-dialog__footer{display:flex;justify-content:flex-end;gap:8px;padding:0 20px 20px}

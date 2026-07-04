@@ -1,0 +1,9 @@
+/* 工作面板 — Webfonts
+   No brand font files were supplied. Substituted with the closest
+   open-source matches, loaded from Google Fonts:
+   - Noto Serif SC   -> display/headings (editorial warmth)
+   - Noto Sans SC    -> UI / body text (dense-UI legibility, full CJK)
+   - IBM Plex Mono   -> timestamps, IDs, code, numeric data
+   Flagged in readme.md — replace this @import with self-hosted
+   @font-face rules if real brand fonts become available. */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');

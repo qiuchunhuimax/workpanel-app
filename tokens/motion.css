@@ -1,0 +1,14 @@
+/* 工作面板 — Motion
+   Calm and efficient: short fades/slides, no bounce/spring. Mechanism-first
+   product, so motion should feel precise, not playful. */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --duration-fast: 120ms; /* @kind other */
+  --duration-base: 180ms; /* @kind other */
+  --duration-slow: 280ms; /* @kind other */
+
+  --motion-fade: opacity var(--duration-base) var(--ease-out);
+  --motion-rise: transform var(--duration-base) var(--ease-out), opacity var(--duration-base) var(--ease-out);
+  --motion-press-scale: 0.98; /* @kind other */
+}

@@ -1,0 +1,86 @@
+/* 工作面板 — Color tokens
+   Warm paper/editorial palette: cream paper ground, ink text, terracotta
+   accent for action, ochre for progress/milestones. Deliberately avoids
+   blue/purple SaaS gradients. */
+:root {
+  /* Base — neutrals (warm, not cool gray) */
+  --base-ink-900: #1A1A1A;
+  --base-ink-700: #3A3733;
+  --base-ink-500: #6B6560;
+  --base-ink-300: #A8A398;
+  --base-paper-000: #FAFAF8;
+  --base-paper-050: #F4F2ED;
+  --base-paper-100: #ECE8DF;
+  --base-line-200: #DEDAD0;
+  --base-line-300: #D8D5CE;
+  --base-white: #FFFFFF;
+
+  /* Base — brand accent (terracotta) */
+  --base-terracotta-700: #7A3A30;
+  --base-terracotta-600: #93453A;
+  --base-terracotta-500: #B0574B;
+  --base-terracotta-200: #E9C6BE;
+  --base-terracotta-100: #F4E4E0;
+
+  /* Base — progress/milestone (ochre) */
+  --base-ochre-600: #96701F;
+  --base-ochre-500: #C08A2E;
+  --base-ochre-200: #EBD6A8;
+  --base-ochre-100: #F5EAD3;
+
+  /* Base — semantic */
+  --base-success-600: #3E6B4B;
+  --base-success-500: #4C7A5E;
+  --base-success-100: #DEEAE0;
+  --base-danger-600: #9A3324;
+  --base-danger-500: #C0402E;
+  --base-danger-100: #F5DFDA;
+  --base-info-600: #3F5B68;
+  --base-info-500: #5A7A8C;
+  --base-info-100: #DEE6E9;
+
+  /* Semantic aliases — surfaces */
+  --surface-app: var(--base-paper-000);
+  --surface-sunken: var(--base-paper-050);
+  --surface-card: var(--base-white);
+  --surface-overlay: var(--base-white);
+  --surface-hover: var(--base-paper-100);
+  --surface-selected: var(--base-terracotta-100);
+  --surface-inverse: var(--base-ink-900);
+
+  /* Semantic aliases — text */
+  --text-primary: var(--base-ink-900);
+  --text-secondary: var(--base-ink-500);
+  --text-tertiary: var(--base-ink-300);
+  --text-on-accent: var(--base-paper-000);
+  --text-on-inverse: var(--base-paper-000);
+  --text-link: var(--base-terracotta-600);
+
+  /* Semantic aliases — borders */
+  --border-subtle: var(--base-line-200);
+  --border-default: var(--base-line-300);
+  --border-strong: var(--base-ink-300);
+  --border-focus: var(--base-terracotta-500);
+
+  /* Semantic aliases — accent / action */
+  --accent-default: var(--base-terracotta-500);
+  --accent-hover: var(--base-terracotta-600);
+  --accent-active: var(--base-terracotta-700);
+  --accent-subtle: var(--base-terracotta-100);
+  --accent-subtle-border: var(--base-terracotta-200);
+
+  /* Semantic aliases — progress / milestone */
+  --progress-fill: var(--base-ochre-500);
+  --progress-track: var(--base-ochre-100);
+  --milestone-text: var(--base-ochre-600);
+
+  /* Semantic aliases — status */
+  --status-success-fg: var(--base-success-600);
+  --status-success-bg: var(--base-success-100);
+  --status-danger-fg: var(--base-danger-600);
+  --status-danger-bg: var(--base-danger-100);
+  --status-info-fg: var(--base-info-600);
+  --status-info-bg: var(--base-info-100);
+  --status-warning-fg: var(--base-ochre-600);
+  --status-warning-bg: var(--base-ochre-100);
+}

@@ -1,0 +1,12 @@
+/* 工作面板 — Corner radii
+   Deliberately modest (not the rounded-everything SaaS look). Pills are
+   reserved for tags/badges/avatars only. */
+:root {
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+  --radius-2xl: 20px;
+  --radius-pill: 999px;
+}

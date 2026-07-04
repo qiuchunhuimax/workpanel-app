@@ -1,0 +1,14 @@
+/* 工作面板 — base element resets built on the tokens above */
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  background: var(--surface-app);
+  color: var(--text-primary);
+  font: var(--type-body);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); }
+p { margin: 0; }
+button { font-family: var(--font-body); }
+::selection { background: var(--accent-subtle); color: var(--accent-active); }
